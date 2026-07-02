@@ -52,13 +52,13 @@ Tone: expert but approachable, confident but not salesy. Length: 200-250 words. 
       aiResponse = completion.choices[0].message.content;
 
     } else {
-      // Default: Groq (free, uses Llama 3.3 70B)
+      // Default: Groq (GPT-OSS 120B)
       const groq = new OpenAI({
         apiKey: process.env.GROQ_API_KEY,
         baseURL: 'https://api.groq.com/openai/v1',
       });
       const completion = await groq.chat.completions.create({
-        model: 'llama-3.3-70b-versatile',
+        model: 'openai/gpt-oss-120b',
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 600,
       });
