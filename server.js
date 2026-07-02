@@ -37,7 +37,7 @@ Open by acknowledging their specific challenge with empathy
 Offer 2–3 concrete, actionable strategies using AI or automation that could realistically solve it in simple, easy to understand, non-technical language
 Subtly position Fernvay Consulting as the natural partner to implement this
 Close with a soft, non-pushy invitation to schedule a free 30-minute discovery call
-Tone: expert but approachable, confident but not salesy. Length: 200-250 words. Do not include a subject line. Start directly with the greeting.`;
+Tone: expert but approachable, confident but not salesy. Length: 200-250 words. Do not include a subject line. Start directly with the greeting. Do not include a sign-off, signature, name, or title at the end — the email must end with the invitation sentence itself; a signature is appended separately.`;
 
     // 1. Generate AI solution via configured provider
     let aiResponse;
@@ -106,12 +106,20 @@ Tone: expert but approachable, confident but not salesy. Length: 200-250 words. 
 });
 
 // ── HTML Email Builder ───────────────────────────────────────────
+const SIGNATURE_HTML = `<p style="margin:1.4em 0 0;line-height:1.6;">
+  Warm regards,<br/>
+  <strong>Roman Martinez</strong><br/>
+  Founder &amp; Senior AI Automation Consultant<br/>
+  Fernvay Consulting<br/>
+  <a href="mailto:roman@fernvayconsulting.com" style="color:#162d52;text-decoration:none;">roman@fernvayconsulting.com</a>
+</p>`;
+
 function buildEmailHtml(name, bottleneck, aiBody) {
   // Convert plain text paragraphs to <p> tags
   const bodyHtml = aiBody
     .split(/\n\n+/)
     .map(p => `<p style="margin:0 0 1.1em 0;line-height:1.75;">${p.trim().replace(/\n/g, '<br/>')}</p>`)
-    .join('');
+    .join('') + SIGNATURE_HTML;
 
   return `<!DOCTYPE html>
 <html lang="en">
