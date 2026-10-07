@@ -80,9 +80,11 @@ Tone: expert but approachable, confident but not salesy. Length: 200-250 words. 
     await resend.emails.send({
       from: fromAddress,
       to: email,
+      // Plain, conversational subject: promotional phrasing ("free AI
+      // solution", "is here") pushes first-contact emails toward spam.
       subject: lang === 'es'
-        ? `Su solución de IA personalizada está lista, ${name.split(' ')[0]}`
-        : `Your custom AI solution is here, ${name.split(' ')[0]}`,
+        ? `${name.split(' ')[0]}, algunas ideas sobre lo que nos compartió`
+        : `${name.split(' ')[0]}, a few ideas on what you shared`,
       html: lang === 'es' ? buildEmailHtmlEs(name, bottleneck, aiResponse) : buildEmailHtml(name, bottleneck, aiResponse),
       text: lang === 'es' ? buildEmailTextEs(name, aiResponse, siteUrl) : buildEmailText(name, aiResponse, siteUrl),
       // Replies go to a real inbox, and the unsubscribe header points at a real
