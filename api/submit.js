@@ -85,9 +85,13 @@ Tone: expert but approachable, confident but not salesy. Length: 200-250 words. 
         : `Your custom AI solution is here, ${name.split(' ')[0]}`,
       html: lang === 'es' ? buildEmailHtmlEs(name, bottleneck, aiResponse) : buildEmailHtml(name, bottleneck, aiResponse),
       text: lang === 'es' ? buildEmailTextEs(name, aiResponse, siteUrl) : buildEmailText(name, aiResponse, siteUrl),
+      // Replies go to a real inbox, and the unsubscribe header points at a real
+      // address. EMAIL_USER isn't always set, which used to produce
+      // "mailto:undefined" — a header that hurts spam scoring. No one-click
+      // header: there is no endpoint that processes a one-click POST.
+      replyTo: REPLY_TO,
       headers: {
-        'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}?subject=unsubscribe>, <${siteUrl}>`,
-        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+        'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER || REPLY_TO}?subject=unsubscribe>`,
       },
     });
 
@@ -113,6 +117,8 @@ Tone: expert but approachable, confident but not salesy. Length: 200-250 words. 
 
   return res.json({ success: true });
 };
+
+const REPLY_TO = process.env.REPLY_TO || 'roman@fernvayconsulting.com';
 
 const SIGNATURE_TEXT = `Warm regards,
 Roman Martinez
