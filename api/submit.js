@@ -30,9 +30,9 @@ A potential client named ${name} has shared their biggest business bottleneck:
 Write a warm, professional, and genuinely helpful email response directly to ${name}. The email should:
 
 Open by acknowledging their specific challenge with empathy
-Offer 2–3 concrete, actionable strategies using AI or automation that could realistically solve it in simple, easy to understand, non-technical language
+Offer 2–3 concrete ideas worth looking at, in simple, non-technical language. Some may involve automation and some may not. Make clear that the right fix depends on how their business actually runs, and do not promise specific results, savings or numbers
 Subtly position Fernvay Consulting as the natural partner to implement this
-Close with a soft, non-pushy invitation to schedule a free 30-minute discovery call
+Close with a soft, non-pushy invitation to book a free 30-minute Workflow Review, where Fernvay finds which workflow is costing them the most before recommending any fix. Never call it a "discovery call"
 Tone: expert but approachable, confident but not salesy. Length: 200-250 words. Do not include a subject line. Start directly with the greeting. Do not include a sign-off, signature, name, or title at the end — the email must end with the invitation sentence itself; a signature is appended separately.` + (lang === 'es' ? SPANISH_INSTRUCTIONS : '');
 
   // ── Step 1: Generate AI response ──────────────────────────────
@@ -142,10 +142,10 @@ function buildEmailText(name, aiBody, siteUrl) {
 ${SIGNATURE_TEXT}
 
 ---
-Schedule a free 30-minute discovery call: https://www.fernvayconsulting.com/discovery-call/
+Book a free 30-minute Workflow Review: https://fernvayconsulting.com/free-workflow-review/
 
 Fernvay Consulting, LLC | ${siteUrl}
-You received this because you requested a free AI solution at ${siteUrl}.
+You received this because you filled in the 60-second reply form at ${siteUrl}.
 To unsubscribe, reply with "unsubscribe" in the subject line.`;
 }
 
@@ -160,7 +160,7 @@ function buildEmailHtml(name, bottleneck, aiBody) {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Your AI Solution — Fernvay Consulting</title>
+  <title>A Few Ideas on What You Shared — Fernvay Consulting</title>
 </head>
 <body style="margin:0;padding:0;background:#f4f1ec;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f1ec;padding:40px 16px;">
@@ -173,7 +173,7 @@ function buildEmailHtml(name, bottleneck, aiBody) {
                    alt="Fernvay Consulting" width="180" height="auto"
                    style="display:block;margin:0 auto 24px;width:180px;max-width:100%;" />
               <h1 style="margin:0;font-family:Georgia,serif;font-size:28px;font-weight:300;color:#f4f1ec;line-height:1.2;">
-                Your Custom AI Solution<br/>
+                A Few Ideas on What You Shared<br/>
                 <em style="font-style:italic;color:#e8c87a;">is ready.</em>
               </h1>
               <p style="margin:14px 0 0;font-size:12px;font-weight:300;letter-spacing:1px;color:rgba(176,200,224,.8);">
@@ -194,9 +194,9 @@ function buildEmailHtml(name, bottleneck, aiBody) {
               <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
                 <tr>
                   <td style="background:#c9a84c;">
-                    <a href="https://www.fernvayconsulting.com/discovery-call/"
+                    <a href="https://fernvayconsulting.com/free-workflow-review/"
                        style="display:inline-block;padding:14px 36px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;color:#0d1f3c;">
-                      Schedule a Free Discovery Call
+                      Book a Free Workflow Review
                     </a>
                   </td>
                 </tr>
@@ -214,7 +214,7 @@ function buildEmailHtml(name, bottleneck, aiBody) {
                 <a href="https://fernvayconsulting.com" style="color:rgba(176,200,224,.7);text-decoration:none;">fernvayconsulting.com</a>
               </p>
               <p style="margin:14px 0 0;font-size:10px;color:rgba(176,200,224,.4);">
-                You received this because you requested a free AI solution at fernvayconsulting.com.<br/>
+                You received this because you filled in the 60-second reply form at fernvayconsulting.com.<br/>
                 <a href="https://fernvayconsulting.com" style="color:rgba(176,200,224,.4);">Unsubscribe</a>
               </p>
             </td>
@@ -270,7 +270,7 @@ ${SIGNATURE_TEXT_ES}
 Reserve su Revisión de Procesos Gratuita de 30 minutos: ${ES_REVIEW_URL}
 
 Fernvay Consulting, LLC | ${siteUrl}
-Recibió este correo porque solicitó una solución de IA gratuita en ${siteUrl}.
+Recibió este correo porque llenó el formulario de respuesta en 60 segundos en ${siteUrl}.
 Para darse de baja, responda con la palabra "baja" en el asunto.`;
 }
 
@@ -285,7 +285,7 @@ function buildEmailHtmlEs(name, bottleneck, aiBody) {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Su solución de IA — Fernvay Consulting</title>
+  <title>Algunas ideas sobre lo que nos compartió — Fernvay Consulting</title>
 </head>
 <body style="margin:0;padding:0;background:#f4f1ec;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f1ec;padding:40px 16px;">
@@ -298,7 +298,7 @@ function buildEmailHtmlEs(name, bottleneck, aiBody) {
                    alt="Fernvay Consulting" width="180" height="auto"
                    style="display:block;margin:0 auto 24px;width:180px;max-width:100%;" />
               <h1 style="margin:0;font-family:Georgia,serif;font-size:28px;font-weight:300;color:#f4f1ec;line-height:1.2;">
-                Su solución de IA personalizada<br/>
+                Algunas ideas sobre lo que nos compartió<br/>
                 <em style="font-style:italic;color:#e8c87a;">está lista.</em>
               </h1>
               <p style="margin:14px 0 0;font-size:12px;font-weight:300;letter-spacing:1px;color:rgba(176,200,224,.8);">
@@ -339,7 +339,7 @@ function buildEmailHtmlEs(name, bottleneck, aiBody) {
                 <a href="https://fernvayconsulting.com/es/" style="color:rgba(176,200,224,.7);text-decoration:none;">fernvayconsulting.com</a>
               </p>
               <p style="margin:14px 0 0;font-size:10px;color:rgba(176,200,224,.4);">
-                Recibió este correo porque solicitó una solución de IA gratuita en fernvayconsulting.com.<br/>
+                Recibió este correo porque llenó el formulario de respuesta en 60 segundos en fernvayconsulting.com.<br/>
                 <a href="https://fernvayconsulting.com/es/" style="color:rgba(176,200,224,.4);">Darse de baja</a>
               </p>
             </td>
